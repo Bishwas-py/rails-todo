@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  <%= @todo.title %>
+<% end %>
+<p style="color: green"><%= notice %></p>
+
+<div class="card border-0 shadow mb-4">
+  <div class="card-header">
+    <div class="row align-items-center">
+      <div class="col"><h2 class="fs-5 fw-bold mb-0"><%= @todo.title %></h2></div>
+      <div class="col text-end">
+        <% if @todo.is_accomplished %>
+          <a href="#" class="btn btn-sm btn-success">Done!</a>
+        <% else %>
+          <a href="#" class="btn btn-sm btn-danger">UnDone!</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>
+      <%= @todo.description %>
+    </p>
+  </div>
+</div>
+<div class="d-flex gap-2">
+  <%= link_to "Edit this todo", edit_todo_path(@todo), class: "btn btn-outline-primary" %>
+  <%= link_to "Back to todos", todos_path, class: "btn btn-outline-info" %>
+
+  <%= button_to "Destroy this todo", @todo, method: :delete, class: "btn btn-outline-indigo" %>
+</div>

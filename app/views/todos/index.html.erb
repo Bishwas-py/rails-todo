@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Todos</h1>
+
+<div id="todos">
+  <% @todos.each do |todo| %>
+    <div class="card border-0 shadow mb-4">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col"><h2 class="fs-5 fw-bold mb-0"><%= todo.title %></h2></div>
+          <div class="col text-end">
+            <%= todo.created_at %>
+            <% if todo.is_accomplished %>
+              <a href="#" class="btn btn-sm btn-success">Done!</a>
+            <% else %>
+              <a href="#" class="btn btn-sm btn-danger">UnDone!</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>
+          <%= todo.description %>
+        </p>
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <%= link_to "Show this todo", todo, class: "btn btn-outline-info" %>
+        <%= link_to "Edit this todo", edit_todo_path(todo), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to new_todo_path, class: "btn btn-outline-tertiary" do %>
+  ↳ Add New
+<% end %>
